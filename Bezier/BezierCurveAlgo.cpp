@@ -23,8 +23,8 @@ void BezierCurveAlgo::bezierAlgoPoint(float cur_t) {
     auto end_it =  (--points_.end());
     for(auto beg = points_.begin(); beg != end_it; ++beg) {
         auto nxt = std::next(beg);
-        point_arr[0].push_back(Point((cur_t*beg->x + minus_t*nxt->x) ,
-                                         (cur_t*beg->y + minus_t*nxt->y)));
+        point_arr[0].push_back(Point((minus_t*beg->x + cur_t*nxt->x) ,
+                                         (minus_t*beg->y + cur_t*nxt->y)));
     }
     int cur_point_arr_ind = 0;
     while(point_arr[cur_point_arr_ind].size() > 1) {
@@ -32,8 +32,8 @@ void BezierCurveAlgo::bezierAlgoPoint(float cur_t) {
         point_arr[nxt_point_arr_ind].clear();
         for(int i=0; i<point_arr[cur_point_arr_ind].size()-1; ++i) {
             point_arr[nxt_point_arr_ind].emplace_back(
-                (cur_t*point_arr[cur_point_arr_ind][i].x + minus_t*point_arr[cur_point_arr_ind][i+1].x),
-                (cur_t*point_arr[cur_point_arr_ind][i].y + minus_t*point_arr[cur_point_arr_ind][i+1].y) 
+                (minus_t*point_arr[cur_point_arr_ind][i].x + cur_t*point_arr[cur_point_arr_ind][i+1].x),
+                (minus_t*point_arr[cur_point_arr_ind][i].y + cur_t*point_arr[cur_point_arr_ind][i+1].y) 
             );
         }
         cur_point_arr_ind = nxt_point_arr_ind;
