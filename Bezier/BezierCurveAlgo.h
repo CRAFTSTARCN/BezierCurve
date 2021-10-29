@@ -13,6 +13,7 @@ class BezierCurveAlgo : public Component {
     Mesh* owner_mesh_;
     bool work_stat;
     float change_stat;
+    std::vector<Point> point_arr[2];
     
 public:
     BezierCurveAlgo(int segment_count);

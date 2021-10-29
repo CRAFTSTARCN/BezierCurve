@@ -19,7 +19,7 @@ BezierCurveAlgo::~BezierCurveAlgo() = default;
 
 void BezierCurveAlgo::bezierAlgoPoint(float cur_t) {
     float minus_t = 1.0-cur_t;
-    std::vector<Point> point_arr[2];
+    point_arr[0].clear(); point_arr[1].clear();
     auto end_it =  (--points_.end());
     for(auto beg = points_.begin(); beg != end_it; ++beg) {
         auto nxt = std::next(beg);
